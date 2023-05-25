@@ -43,8 +43,45 @@ function updateTagCount() {
 
 
 function addNewTags() {
-  Logger.log(updatedTags.filter(x => !tags.some(e => JSON.stringify(e) === JSON.stringify(x))));
+
+
+  //create arrays of just i[0] - just tag names in this use
+  var tagNameArray = tags.map(tagName => tagName[0]);
+  var newTagNameArray = updatedTags.map(newTag => newTag[0]);
+
+  //create array of new tags by comparing which ones are not in the tagNameArray 
+  var newTag = newTagNameArray.filter(x => !tagNameArray.includes(x));
+
+  newTag.forEach(newTag => {
+    Logger.log(newTag + " is a new tag");
+  });
+
+
+  var oldTag = newTagNameArray.filter(x => tagNameArray.includes(x));
+
+  oldTag.forEach(oldTag => {
+    Logger.log(oldTag + " is an old tag");
+  });
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
