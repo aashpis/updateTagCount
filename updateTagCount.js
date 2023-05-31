@@ -11,6 +11,15 @@ let tags = ss.getDataRange().getValues();
 let updatedTags = newInfo.getDataRange().getValues();   
 
 
+//add UI elements to initiate functions 
+function onOpen(e) {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('Update Tags')
+      .addItem('Add New Tags', 'addNewTags')
+      .addItem('Update Tag Event Count', 'updateTagCount')
+      .addToUi();
+}
+
 
 
 function updateTagCount(){
@@ -55,14 +64,12 @@ function addNewTags(){
       ss.insertRowBefore(2);
       newRow = ss.getRange(2,1,1, ss.getLastColumn());
       var eventCount
-      newRow.setValues([[newTagName,eventCount, null, null, null, "this is a new tag",null,null,]]).setBackground("FFF57E");
+      newRow.setValues([[newTagName,eventCount, null, null, null, "this is a new tag",null,null,]]).setBackground("#FFF57E");
 
     });
 
 
 }
-
-
 
 
 
